@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TOTPConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <StoreType>TOTPAuthenticationProvider.TOTPAuthenticatorMSSQLStore, TOTPAuthenticationProvider</StoreType>
+  <ConnectionString>Server=tcp:server.database.windows.net,1433;Initial Catalog=DATABASE;Persist Security Info=False;User ID=username;Password=password;Encrypt=True;Connection Timeout=30;</ConnectionString>
+  <ValidityPeriodSeconds>30</ValidityPeriodSeconds><!-- Please note that most authenticator apps only support 30. -->
+  <FutureIntervals>1</FutureIntervals>
+  <PastIntervals>1</PastIntervals>
+  <SecretKeyLength>0</SecretKeyLength><!-- Per RFC, the minimal length is 16. The recommended length is 20. 0 indicates that the length is determined based on the hash protocol. (20, 32 or 64) -->
+  <LockoutDurationInSeconds>1800</LockoutDurationInSeconds>
+  <MaxAttempts>5</MaxAttempts><!-- A value of 0 will disable account lockout. -->
+  <CompanyName>Contoso</CompanyName>
+  <SupportEmail>support@contoso.com</SupportEmail>
+  <CodeLength>6</CodeLength><!-- Please note that most authenticator apps only support a code length of 6. -->
+  <Algorithm>HmacSHA1</Algorithm>
+    <!-- Allowed values are: HmacSHA1, HmacSHA256 and HmacSHA512. Please note that most authenticator apps only support HmacSHA1. -->
+</TOTPConfiguration>

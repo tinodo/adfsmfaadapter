@@ -1,0 +1,48 @@
+﻿<div id="loginArea">
+	<form method="post" id="loginForm" name="loginForm">
+		<input id="authMethod" type="hidden" name="AuthMethod" value="%AuthMethod%"/>
+		<input id="context" type="hidden" name="Context" value="%Context%"/>
+		<div id="titleDiv" class="groupMargin">
+			<h1 id="sectionHeader">*MFA*</h1> 
+		</div> 
+		<div id="qrcode">
+			<p>*QRCODETEXT*</p>
+			<br />
+			*QRCODEIMAGE*
+		</div>
+		<label for="challengeQuestionInput" class="block">*ENTERCODE*</label>
+		<input id="challengeQuestionInput" name="ChallengeQuestionAnswer" type="text" value="" class="text" placeholder="*CODE*" />
+		<div id="submissionArea" class="submitMargin">
+			<input id="submitButton" type="submit" name="submit" value="*SUBMIT*" onclick="return checkform();"/>
+		</div>
+	</form>
+
+	<div id="errorArea" class="error">
+		<p id="error">*ERROR*</p>
+	</div>
+
+	<div id="intro" class="groupMargin">
+		<p id="supportEmail">*SUPPORT*</p>
+	</div>
+</div>
+
+<script type="text/javascript">
+	//<![CDATA[
+	
+	if (*HIDEQRCODE* == 1) { document.getElementById("qrcode").style.display = "none"; }
+	if (*HIDELOGIN* == 1) { document.getElementById("submitButton").disabled = true; document.getElementById("challengeQuestionInput").disabled = true;}
+	if (*HIDEERROR* == 1) { document.getElementById("errorArea").style.display = "none"; }
+
+	function checkform() {
+		if(document.loginForm.ChallengeQuestionAnswer.value.match(/^\d{*CODEDIGITS*}$/)) {
+			document.getElementById(submitButton).disabled = true
+			document.loginForm.submit();
+			return true;
+		} else {
+			alert("*INCORRECTCODEFORMAT*");
+			return false;
+		}
+	}
+
+	//]]>
+</script>
